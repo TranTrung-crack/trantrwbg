@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<!-- Khai báo loại tài liệu là HTML5, bắt buộc để trình duyệt hiểu đúng -->
+<html lang="vi">
+<!-- Thẻ html bao toàn bộ nội dung, lang="vi" giúp hỗ trợ ngôn ngữ tiếng Việt -->
+
+<head>
+    <!-- Phần đầu trang, chứa thông tin meta, tiêu đề, liên kết css -->
+    
+    <meta charset="UTF-8">
+    <!-- Bộ mã ký tự UTF-8, hỗ trợ tiếng Việt có dấu -->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tối ưu hiển thị trên di động: độ rộng khớp màn hình, tỷ lệ phóng ban đầu là 1 -->
+    
+    <title>Trang Web Cực Dễ</title>
+    <!-- Tiêu đề hiển thị trên tab trình duyệt -->
+    
+    <style>
+        /* PHẦN CSS - ĐỊNH DẠNG GIAO DIỆN */
+        /* Dùng style bên trong head cho đơn giản, không cần file riêng */
+        
+        /* Chọn toàn bộ phần tử, xóa khoảng cách mặc định và đặt phông nền */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* Đảm bảo kích thước tính cả viền và đệm */
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            /* Phông chữ dễ đọc, dự phòng sans-serif */
+            background-color: #f0f8ff;
+            /* Màu nền xanh nhạt (aliceblue) */
+            color: #333;
+            /* Màu chữ xám đậm */
+            line-height: 1.6;
+            /* Khoảng cách dòng 1.6 giúp dễ đọc */
+            padding: 20px;
+            /* Khoảng cách mép ngoài cho toàn trang */
+            max-width: 800px;
+            /* Giới hạn chiều rộng để không bị tràn màn hình lớn */
+            margin: 0 auto;
+            /* Căn giữa khối nội dung */
+        }
+        
+        h1 {
+            color: #0066cc;
+            /* Màu xanh dương cho tiêu đề chính */
+            text-align: center;
+            /* Căn giữa */
+            border-bottom: 3px solid #0066cc;
+            /* Gạch chân viền dưới */
+            padding-bottom: 10px;
+            /* Khoảng cách dưới chữ */
+            margin-bottom: 20px;
+            /* Khoảng cách dưới khối */
+        }
+        
+        h2 {
+            color: #004d99;
+            /* Màu xanh đậm hơn cho tiêu đề phụ */
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-left: 5px solid #004d99;
+            /* Gạch bên trái */
+            padding-left: 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            /* Khoảng cách giữa các đoạn văn */
+            text-align: justify;
+            /* Căn đều hai bên cho đẹp */
+        }
+        
+        ul,
+        ol {
+            margin-left: 30px;
+            /* Thụt đầu dòng cho danh sách */
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+            /* Khoảng cách giữa các mục */
+        }
+        
+        .highlight {
+            /* Lớp định dạng riêng cho văn bản nổi bật */
+            background-color: #ffff99;
+            /* Nền vàng nhạt */
+            padding: 2px 6px;
+            border-radius: 4px;
+            /* Bo góc nhẹ */
+            font-weight: bold;
+        }
+        
+        #special-box {
+            /* Định dạng cho một khung đặc biệt (dùng id) */
+            border: 2px solid #ff6600;
+            background-color: #fff5e6;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        a {
+            color: #0066cc;
+            text-decoration: none;
+            /* Bỏ gạch chân mặc định */
+        }
+        
+        a:hover {
+            /* Hiệu ứng khi di chuột vào link */
+            text-decoration: underline;
+            color: #ff3300;
+        }
+        
+        img {
+            max-width: 100%;
+            /* Ảnh co dãn theo khung chứa, không tràn */
+            height: auto;
+            /* Giữ tỷ lệ khung hình */
+            display: block;
+            /* Xuống dòng trước sau ảnh */
+            margin: 15px auto;
+            /* Căn giữa ảnh */
+            border-radius: 8px;
+            /* Bo góc ảnh */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            /* Đổ bóng nhẹ */
+        }
+        
+        button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            /* Con trỏ thành bàn tay khi hover */
+        }
+        
+        button:hover {
+            background-color: #004d99;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #666;
+            border-top: 1px solid #ccc;
+            padding-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- PHẦN THÂN TRANG - NỘI DUNG HIỂN THỊ -->
+    
+    <h1>🌐 Chào mừng đến với trang web đầu tiên</h1>
+    
+    <p>Đây là một trang HTML <strong>cực kỳ đơn giản</strong> nhưng <em>đầy đủ</em> các thành phần cơ bản. Bạn có thể dùng làm mẫu để bắt đầu.</p>
+    
+    <h2>📌 Danh sách thứ tự (Ordered List)</h2>
+    <ol>
+        <li>Bước 1: Mở file bằng trình duyệt</li>
+        <li>Bước 2: Xem kết quả</li>
+        <li>Bước 3: Chỉnh sửa nội dung trong file</li>
+    </ol>
+    
+    <h2>📌 Danh sách không thứ tự (Unordered List)</h2>
+    <ul>
+        <li><span class="highlight">HTML</span> - Khung xương</li>
+        <li><span class="highlight">CSS</span> - Trang phục</li>
+        <li><span class="highlight">JavaScript</span> - Hành động (thêm sau)</li>
+    </ul>
+    
+    <!-- Khung đặc biệt với id -->
+    <div id="special-box">
+        <h3>💡 Mẹo nhỏ</h3>
+        <p>Để chèn ảnh, bạn cần có file ảnh cùng thư mục hoặc dùng đường dẫn URL. Ví dụ bên dưới là ảnh mẫu từ internet (nếu không tải được, sẽ hiện chữ thay thế).</p>
+    </div>
+    
+    <!-- Chèn ảnh từ URL (placeholder) -->
+    <img src="https://via.placeholder.com/400x200/0066cc/ffffff?text=Anh+Minh+Hoa" alt="Ảnh mẫu minh họa" title="Hover để xem chú thích">
+    
+    <h2>🔗 Liên kết và nút bấm</h2>
+    <p>Xem thêm tại <a href="https://www.w3schools.com" target="_blank">W3Schools (mở tab mới)</a>.</p>
+    
+    <!-- Nút bấm không có chức năng phức tạp, chỉ demo -->
+    <button onclick="alert('Bạn đã click!')">Nhấn vào đây</button>
+    
+    <hr>
+    <!-- Đường kẻ ngang phân cách -->
+    
+    <h2>🧾 Bảng đơn giản</h2>
+    <table style="width:100%; border-collapse: collapse; margin: 15px 0;">
+        <!-- border-collapse: gộp viền -->
+        <tr style="background-color:#0066cc; color:white;">
+            <th style="padding:8px; border:1px solid #ddd;">Tên</th>
+            <th style="padding:8px; border:1px solid #ddd;">Màu sắc</th>
+        </tr>
+        <tr>
+            <td style="padding:8px; border:1px solid #ddd;">Xe</td>
+            <td style="padding:8px; border:1px solid #ddd;">Đỏ</td>
+        </tr>
+        <tr>
+            <td style="padding:8px; border:1px solid #ddd;">Nhà</td>
+            <td style="padding:8px; border:1px solid #ddd;">Xanh</td>
+        </tr>
+    </table>
+    
+    <!-- Phần chân trang -->
+    <footer>
+        <p>&copy; 2026 - Trang web cực dễ. Mọi quyền được bảo lưu (hoặc không).</p>
+    </footer>
+    
+</body>
+</html>
