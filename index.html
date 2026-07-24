@@ -1,223 +1,186 @@
 <!DOCTYPE html>
-<!-- Khai báo loại tài liệu là HTML5, bắt buộc để trình duyệt hiểu đúng -->
 <html lang="vi">
-<!-- Thẻ html bao toàn bộ nội dung, lang="vi" giúp hỗ trợ ngôn ngữ tiếng Việt -->
-
 <head>
-    <!-- Phần đầu trang, chứa thông tin meta, tiêu đề, liên kết css -->
-    
     <meta charset="UTF-8">
-    <!-- Bộ mã ký tự UTF-8, hỗ trợ tiếng Việt có dấu -->
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Tối ưu hiển thị trên di động: độ rộng khớp màn hình, tỷ lệ phóng ban đầu là 1 -->
-    
-    <title>Trang Web Cực Dễ</title>
-    <!-- Tiêu đề hiển thị trên tab trình duyệt -->
-    
+    <title>ʚTran Trungɞ</title>
     <style>
-        /* PHẦN CSS - ĐỊNH DẠNG GIAO DIỆN */
-        /* Dùng style bên trong head cho đơn giản, không cần file riêng */
-        
-        /* Chọn toàn bộ phần tử, xóa khoảng cách mặc định và đặt phông nền */
+        /* RESET toàn màn hình */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* Đảm bảo kích thước tính cả viền và đệm */
         }
-        
-        body {
+        body, html {
+            width: 100%;
+            height: 100%;
+            background: #111; /* nền tối phụ, nhưng splash sẽ che */
             font-family: Arial, sans-serif;
-            /* Phông chữ dễ đọc, dự phòng sans-serif */
-            background-color: #f0f8ff;
-            /* Màu nền xanh nhạt (aliceblue) */
-            color: #333;
-            /* Màu chữ xám đậm */
-            line-height: 1.6;
-            /* Khoảng cách dòng 1.6 giúp dễ đọc */
-            padding: 20px;
-            /* Khoảng cách mép ngoài cho toàn trang */
-            max-width: 800px;
-            /* Giới hạn chiều rộng để không bị tràn màn hình lớn */
-            margin: 0 auto;
-            /* Căn giữa khối nội dung */
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        
-        h1 {
-            color: #0066cc;
-            /* Màu xanh dương cho tiêu đề chính */
-            text-align: center;
-            /* Căn giữa */
-            border-bottom: 3px solid #0066cc;
-            /* Gạch chân viền dưới */
-            padding-bottom: 10px;
-            /* Khoảng cách dưới chữ */
-            margin-bottom: 20px;
-            /* Khoảng cách dưới khối */
+
+        /* ---- LỚP SPLASH CHE TOÀN BỘ MÀN HÌNH ---- */
+        #splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000; /* nền đen */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999; /* cực cao để đè lên mọi thứ */
+            /* Viền cầu vồng động */
+            border: 8px solid transparent;
+            box-sizing: border-box;
+            animation: rainbow-border 2s linear infinite;
+            transition: opacity 0.8s ease;
         }
-        
-        h2 {
-            color: #004d99;
-            /* Màu xanh đậm hơn cho tiêu đề phụ */
-            margin-top: 20px;
-            margin-bottom: 10px;
-            border-left: 5px solid #004d99;
-            /* Gạch bên trái */
-            padding-left: 10px;
+
+        /* Hiệu ứng viền cầu vồng chạy */
+        @keyframes rainbow-border {
+            0% { border-image: linear-gradient(0deg, red, orange, yellow, green, blue, indigo, violet) 1; }
+            20% { border-image: linear-gradient(36deg, red, orange, yellow, green, blue, indigo, violet) 1; }
+            40% { border-image: linear-gradient(72deg, red, orange, yellow, green, blue, indigo, violet) 1; }
+            60% { border-image: linear-gradient(108deg, red, orange, yellow, green, blue, indigo, violet) 1; }
+            80% { border-image: linear-gradient(144deg, red, orange, yellow, green, blue, indigo, violet) 1; }
+            100% { border-image: linear-gradient(180deg, red, orange, yellow, green, blue, indigo, violet) 1; }
         }
-        
-        p {
-            margin-bottom: 15px;
-            /* Khoảng cách giữa các đoạn văn */
-            text-align: justify;
-            /* Căn đều hai bên cho đẹp */
-        }
-        
-        ul,
-        ol {
-            margin-left: 30px;
-            /* Thụt đầu dòng cho danh sách */
-            margin-bottom: 15px;
-        }
-        
-        li {
-            margin-bottom: 5px;
-            /* Khoảng cách giữa các mục */
-        }
-        
-        .highlight {
-            /* Lớp định dạng riêng cho văn bản nổi bật */
-            background-color: #ffff99;
-            /* Nền vàng nhạt */
-            padding: 2px 6px;
-            border-radius: 4px;
-            /* Bo góc nhẹ */
+
+        /* Dòng chữ chào mừng - to, giữa */
+        #welcome-text {
+            color: #fff;
+            font-size: 3rem;
             font-weight: bold;
-        }
-        
-        #special-box {
-            /* Định dạng cho một khung đặc biệt (dùng id) */
-            border: 2px solid #ff6600;
-            background-color: #fff5e6;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-        
-        a {
-            color: #0066cc;
-            text-decoration: none;
-            /* Bỏ gạch chân mặc định */
-        }
-        
-        a:hover {
-            /* Hiệu ứng khi di chuột vào link */
-            text-decoration: underline;
-            color: #ff3300;
-        }
-        
-        img {
-            max-width: 100%;
-            /* Ảnh co dãn theo khung chứa, không tràn */
-            height: auto;
-            /* Giữ tỷ lệ khung hình */
-            display: block;
-            /* Xuống dòng trước sau ảnh */
-            margin: 15px auto;
-            /* Căn giữa ảnh */
-            border-radius: 8px;
-            /* Bo góc ảnh */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            /* Đổ bóng nhẹ */
-        }
-        
-        button {
-            background-color: #0066cc;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            /* Con trỏ thành bàn tay khi hover */
-        }
-        
-        button:hover {
-            background-color: #004d99;
-        }
-        
-        footer {
+            text-shadow: 0 0 30px rgba(255,255,255,0.6);
             text-align: center;
-            margin-top: 40px;
-            font-size: 14px;
-            color: #666;
-            border-top: 1px solid #ccc;
-            padding-top: 15px;
+            padding: 0 20px;
+            animation: pulse 1.5s ease-in-out infinite;
         }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.06); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.9; }
+        }
+
+        /* ---- HỘP QUÀ (nằm BÊN DƯỚI lớp splash, sẽ bị che khuất) ---- */
+        #main-content {
+            position: relative;
+            z-index: 1; /* thấp hơn splash */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        #gift-box {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 0 40px rgba(255,75,43,0.7);
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 4rem;
+            color: #fff;
+            user-select: none;
+            border: 3px solid #ffd700;
+            position: relative;
+        }
+        #gift-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 60px rgba(255,75,43,0.9);
+        }
+        #gift-box:active {
+            transform: scale(0.95);
+        }
+        .gift-label {
+            position: absolute;
+            bottom: 10px;
+            font-size: 0.8rem;
+            background: rgba(0,0,0,0.6);
+            padding: 3px 12px;
+            border-radius: 20px;
+            color: #fff;
+            border: 1px solid #fff;
+            pointer-events: none;
+        }
+
+        #gift-content {
+            display: none;
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            background: rgba(0,0,0,0.85);
+            padding: 30px 50px;
+            border-radius: 20px;
+            border: 3px solid #ffd700;
+            box-shadow: 0 0 60px rgba(255,215,0,0.3);
+            margin-top: 30px;
+            animation: fadeInUp 0.6s ease;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        #gift-box.hidden { display: none; }
+        #gift-content.show { display: block; }
     </style>
 </head>
-
 <body>
-    <!-- PHẦN THÂN TRANG - NỘI DUNG HIỂN THỊ -->
-    
-    <h1>🌐 Chào mừng đến với trang web đầu tiên</h1>
-    
-    <p>Đây là một trang HTML <strong>cực kỳ đơn giản</strong> nhưng <em>đầy đủ</em> các thành phần cơ bản. Bạn có thể dùng làm mẫu để bắt đầu.</p>
-    
-    <h2>📌 Danh sách thứ tự (Ordered List)</h2>
-    <ol>
-        <li>Bước 1: Mở file bằng trình duyệt</li>
-        <li>Bước 2: Xem kết quả</li>
-        <li>Bước 3: Chỉnh sửa nội dung trong file</li>
-    </ol>
-    
-    <h2>📌 Danh sách không thứ tự (Unordered List)</h2>
-    <ul>
-        <li><span class="highlight">HTML</span> - Khung xương</li>
-        <li><span class="highlight">CSS</span> - Trang phục</li>
-        <li><span class="highlight">JavaScript</span> - Hành động (thêm sau)</li>
-    </ul>
-    
-    <!-- Khung đặc biệt với id -->
-    <div id="special-box">
-        <h3>💡 Mẹo nhỏ</h3>
-        <p>Để chèn ảnh, bạn cần có file ảnh cùng thư mục hoặc dùng đường dẫn URL. Ví dụ bên dưới là ảnh mẫu từ internet (nếu không tải được, sẽ hiện chữ thay thế).</p>
+
+    <!-- LỚP SPLASH CHE TẤT CẢ, KỂ CẢ HỘP QUÀ -->
+    <div id="splash">
+        <div id="welcome-text">🎉 Chào mừng đến với web của ʚTran Trungɞ 🎉</div>
     </div>
-    
-    <!-- Chèn ảnh từ URL (placeholder) -->
-    <img src="https://via.placeholder.com/400x200/0066cc/ffffff?text=Anh+Minh+Hoa" alt="Ảnh mẫu minh họa" title="Hover để xem chú thích">
-    
-    <h2>🔗 Liên kết và nút bấm</h2>
-    <p>Xem thêm tại <a href="https://www.w3schools.com" target="_blank">W3Schools (mở tab mới)</a>.</p>
-    
-    <!-- Nút bấm không có chức năng phức tạp, chỉ demo -->
-    <button onclick="alert('Bạn đã click!')">Nhấn vào đây</button>
-    
-    <hr>
-    <!-- Đường kẻ ngang phân cách -->
-    
-    <h2>🧾 Bảng đơn giản</h2>
-    <table style="width:100%; border-collapse: collapse; margin: 15px 0;">
-        <!-- border-collapse: gộp viền -->
-        <tr style="background-color:#0066cc; color:white;">
-            <th style="padding:8px; border:1px solid #ddd;">Tên</th>
-            <th style="padding:8px; border:1px solid #ddd;">Màu sắc</th>
-        </tr>
-        <tr>
-            <td style="padding:8px; border:1px solid #ddd;">Xe</td>
-            <td style="padding:8px; border:1px solid #ddd;">Đỏ</td>
-        </tr>
-        <tr>
-            <td style="padding:8px; border:1px solid #ddd;">Nhà</td>
-            <td style="padding:8px; border:1px solid #ddd;">Xanh</td>
-        </tr>
-    </table>
-    
-    <!-- Phần chân trang -->
-    <footer>
-        <p>&copy; 2026 - Trang web cực dễ. Mọi quyền được bảo lưu (hoặc không).</p>
-    </footer>
-    
+
+    <!-- NỘI DUNG CHÍNH (HỘP QUÀ) - BỊ CHE HOÀN TOÀN BỞI SPLASH -->
+    <div id="main-content">
+        <div id="gift-box" onclick="openGift()">
+            🎁
+            <span class="gift-label">Ấn để mở</span>
+        </div>
+        <div id="gift-content">✨địt con mẹ mày nhìn cái đb quà á quà cái đb tham vl✨</div>
+    </div>
+
+    <script>
+        // ---- SAU 5 GIÂY, LỚP SPLASH BIẾN MẤT (MỜ DẦN) ----
+        setTimeout(function() {
+            let splash = document.getElementById('splash');
+            if (splash) {
+                splash.style.opacity = '0';
+                // Sau khi mờ hết, ẩn luôn khỏi luồng hiển thị
+                setTimeout(function() {
+                    splash.style.display = 'none';
+                }, 800);
+            }
+        }, 5000); // 5000ms = 5 giây
+
+        // ---- HÀM MỞ HỘP QUÀ (chỉ hoạt động sau khi splash biến mất) ----
+        function openGift() {
+            let box = document.getElementById('gift-box');
+            let content = document.getElementById('gift-content');
+            if (box && content) {
+                box.classList.add('hidden');
+                content.classList.add('show');
+                // Reset animation để chạy lại
+                content.style.animation = 'none';
+                setTimeout(() => {
+                    content.style.animation = 'fadeInUp 0.6s ease';
+                }, 10);
+            }
+        }
+    </script>
 </body>
 </html>
